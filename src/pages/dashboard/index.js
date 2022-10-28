@@ -1,23 +1,9 @@
-import React, { useState, useEffect } from 'react'
-
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
 // ** Styled Component Import
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
-// ** Demo Components Imports
-import CardWidgetsVisitsByDay from 'src/views/ui/cards/widgets/CardWidgetsVisitsByDay'
-import CardWidgetsWeeklySales from 'src/views/ui/cards/widgets/CardWidgetsWeeklySales'
-import CardWidgetsPerformance from 'src/views/ui/cards/widgets/CardWidgetsPerformance'
-import CardWidgetsSalesCountry from 'src/views/ui/cards/widgets/CardWidgetsSalesCountry'
-import CardWidgetsMonthlyBudget from 'src/views/ui/cards/widgets/CardWidgetsMonthlyBudget'
-import CardWidgetsExternalLinks from 'src/views/ui/cards/widgets/CardWidgetsExternalLinks'
-import CardWidgetsWeeklyOverview from 'src/views/ui/cards/widgets/CardWidgetsWeeklyOverview'
-import CardWidgetsOrganicSessions from 'src/views/ui/cards/widgets/CardWidgetsOrganicSessions'
-import CardWidgetsProjectTimeline from 'src/views/ui/cards/widgets/CardWidgetsProjectTimeline'
-import CardWidgetsActivityTimeline from 'src/views/ui/cards/widgets/CardWidgetsActivityTimeline'
-import CardWidgetsTotalTransactions from 'src/views/ui/cards/widgets/CardWidgetsTotalTransactions'
 import CardImgTop from 'src/views/ui/cards/basic/CardImgTop'
 import CardUser from 'src/views/ui/cards/basic/CardUser'
 import TableColumns from 'src/views/table/data-grid/TableColumns'
@@ -25,9 +11,6 @@ import TableColumns from 'src/views/table/data-grid/TableColumns'
 import CardMostPopularCar from 'src/views/ui/cards/advanced/CardMostPopularCar'
 import CardHighestRevenueCar from 'src/views/ui/cards/advanced/CardHighestRevenueCar'
 import CardMostPopularOwner from 'src/views/ui/cards/advanced/CardMostPopularOwner'
-import CardWidgetsPerformanceOverview from 'src/views/ui/cards/widgets/CardWidgetsPerformanceOverview'
-
-import { useSettings } from 'src/@core/hooks/useSettings'
 
 const CardWidgets = () => {
   return (

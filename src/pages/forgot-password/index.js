@@ -13,9 +13,6 @@ import Typography from '@mui/material/Typography'
 // ** Icons Imports
 import ChevronLeft from 'mdi-material-ui/ChevronLeft'
 
-// ** Configs
-import themeConfig from 'src/configs/themeConfig'
-
 // ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 
