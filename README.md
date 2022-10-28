@@ -1,2 +1,2 @@
-# Inspecturo-FrontEnd
-This is React Simple Dashboard
+# Inspecturo-client
+This is client side
