@@ -99,5 +99,6 @@
   },  
   "engines": {
     "node": "16.17.1"
-  }
+  },
+   "stack": "heroku-22"
 }
