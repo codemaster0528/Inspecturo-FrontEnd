@@ -14,6 +14,8 @@ export default {
   storageUserStatus: 'userStatus',
   storageUserAddons: 'userAddons',
 
+  storageCurrentRegion: 'currentRegion',
+
   // API Data
   storageSearchRanking: 'searchRankingData',
   storageMostPopularCars: 'mostPopularCars',

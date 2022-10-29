@@ -96,9 +96,5 @@
     "eslint-plugin-import": "2.25.4",
     "next-transpile-modules": "9.0.0",
     "prettier": "2.6.2"
-  },  
-  "engines": {
-    "node": "16.17.1"
-  },
-   "stack": "heroku-18"
+  }
 }

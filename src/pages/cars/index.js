@@ -4,10 +4,10 @@ import Grid from '@mui/material/Grid'
 // ** Styled Component Import
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
-import CardMostPopularCar from 'src/views/ui/cards/advanced/CardMostPopularCar'
-import CardHighestRevenueCar from 'src/views/ui/cards/advanced/CardHighestRevenueCar'
-import CardHighestInspecturoScoreCar from 'src/views/ui/cards/advanced/CardHighestInspecturoScoreCar'
-import CarsTable3 from 'src/views/ui/cards/basic/CarsTable3'
+import CardMostPopularCar from 'src/views/cards/CardMostPopularCar'
+import CardHighestRevenueCar from 'src/views/cards/CardHighestRevenueCar'
+import CardHighestInspecturoScoreCar from 'src/views/cards/CardHighestInspecturoScoreCar'
+import CarsTable3 from 'src/views/table/CarsTable3'
 
 const CardWidgets = () => {
   return (

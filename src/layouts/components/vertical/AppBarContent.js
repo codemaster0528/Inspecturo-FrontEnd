@@ -7,11 +7,10 @@ import Grid from '@mui/material/Grid'
 import MenuIcon from 'mdi-material-ui/Menu'
 
 // ** Components
-import Autocomplete from 'src/layouts/components/Autocomplete'
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler'
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown'
 import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown'
-import CardMobile from 'src/views/ui/cards/basic/CardMobile'
+import SearchBar from 'src/views/cards/SearchBar'
 import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown'
 
 const AppBarContent = props => {
@@ -22,7 +21,7 @@ const AppBarContent = props => {
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ width: '100%', mr: 2, mt: 6, display: 'flex', alignItems: 'center' }}>
         <div style={{ width: '100%' }}>
-          <CardMobile />
+          <SearchBar />
         </div>
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>

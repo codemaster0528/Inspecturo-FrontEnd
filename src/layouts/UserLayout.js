@@ -6,15 +6,13 @@ import Layout from 'src/@core/layouts/Layout'
 
 // ** Navigation Imports
 import VerticalNavItems from 'src/navigation/vertical'
-import HorizontalNavItems from 'src/navigation/horizontal'
 
 // ** Component Import
 // Uncomment the below line (according to the layout type) when using server-side menu
 // import ServerSideVerticalNavItems from './components/vertical/ServerSideNavItems'
-// import ServerSideHorizontalNavItems from './components/horizontal/ServerSideNavItems'
+// import ServerSideVerticalNavItems from './components/vertical/ServerSideNavItems'
 
 import VerticalAppBarContent from './components/vertical/AppBarContent'
-import HorizontalAppBarContent from './components/horizontal/AppBarContent'
 
 // ** Hook Import
 import { useSettings } from 'src/@core/hooks/useSettings'
@@ -38,16 +36,16 @@ const UserLayout = ({ children }) => {
       hidden={hidden}
       settings={settings}
       saveSettings={saveSettings}
-      {...(settings.layout === 'horizontal'
+      {...(settings.layout === 'vertical'
         ? {
             // ** Navigation Items
-            horizontalNavItems: HorizontalNavItems(),
+            verticalNavItems: VerticalNavItems(),
 
-            // Uncomment the below line when using server-side menu in horizontal layout and comment the above line
-            // horizontalNavItems: ServerSideHorizontalNavItems(),
+            // Uncomment the below line when using server-side menu in vertical layout and comment the above line
+            // verticalNavItems: ServerSideVerticalNavItems(),
             // ** AppBar Content
-            horizontalAppBarContent: () => (
-              <HorizontalAppBarContent hidden={hidden} settings={settings} saveSettings={saveSettings} />
+            verticalAppBarContent: () => (
+              <VerticalAppBarContent hidden={hidden} settings={settings} saveSettings={saveSettings} />
             )
           }
         : {
@@ -68,7 +66,6 @@ const UserLayout = ({ children }) => {
           })}
     >
       {children}
-      
     </Layout>
   )
 }

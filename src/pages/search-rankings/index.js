@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-import TableSearchRanking from 'src/views/table/data-grid/TableSearchRanking'
+import TableSearchRanking from 'src/views/table/TableSearchRanking'
 import authConfig from 'src/configs/auth'
 
 const CardBasic = () => {
@@ -15,7 +15,7 @@ const CardBasic = () => {
 
     if (searchRankingData) setDataFromAPI(searchRankingData)
     else getDataFromAPI()
-  }, [])
+  }, [dataFromAPI.length])
 
   const getDataFromAPI = async () => {
     var myHeaders = new Headers()
@@ -23,7 +23,7 @@ const CardBasic = () => {
 
     var urlencoded = new URLSearchParams()
     urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
-    urlencoded.append('regionId', '1')
+    urlencoded.append('regionId', window.localStorage.getItem(authConfig.storageCurrentRegion))
 
     var requestOptions = {
       method: 'POST',

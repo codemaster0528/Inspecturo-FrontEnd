@@ -2,9 +2,9 @@
 import Head from 'next/head'
 import { Router } from 'next/router'
 
-// ** Store Imports
-import { store } from 'src/store'
 import { Provider } from 'react-redux'
+
+import { store } from 'src/store'
 
 // ** Loader Import
 import NProgress from 'nprogress'
@@ -14,18 +14,16 @@ import { CacheProvider } from '@emotion/react'
 
 // ** Config Imports
 import 'src/configs/i18n'
-import { defaultACLObj } from 'src/configs/acl'
 import themeConfig from 'src/configs/themeConfig'
 
 // ** Fake-DB Import
-import 'src/@fake-db'
+import 'src/authentication'
 
 // ** Third Party Import
 import { Toaster } from 'react-hot-toast'
 
 // ** Component Imports
 import UserLayout from 'src/layouts/UserLayout'
-import AclGuard from 'src/@core/components/auth/AclGuard'
 import ThemeComponent from 'src/@core/theme/ThemeComponent'
 import AuthGuard from 'src/@core/components/auth/AuthGuard'
 import GuestGuard from 'src/@core/components/auth/GuestGuard'
@@ -90,7 +88,6 @@ const App = props => {
   const setConfig = Component.setConfig ?? undefined
   const authGuard = Component.authGuard ?? true
   const guestGuard = Component.guestGuard ?? false
-  const aclAbilities = Component.acl ?? defaultACLObj
 
   return (
     <Provider store={store}>
@@ -113,9 +110,7 @@ const App = props => {
                   <ThemeComponent settings={settings}>
                     <WindowWrapper>
                       <Guard authGuard={authGuard} guestGuard={guestGuard}>
-                        <AclGuard aclAbilities={aclAbilities} guestGuard={guestGuard}>
-                          {getLayout(<Component {...pageProps} />)}
-                        </AclGuard>
+                        {getLayout(<Component {...pageProps} />)}
                       </Guard>
                     </WindowWrapper>
                     <ReactHotToast>

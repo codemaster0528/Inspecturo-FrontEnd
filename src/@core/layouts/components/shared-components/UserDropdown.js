@@ -106,7 +106,7 @@ const UserDropdown = props => {
         anchorOrigin={{ vertical: 'bottom', horizontal: direction === 'ltr' ? 'right' : 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: direction === 'ltr' ? 'right' : 'left' }}
       >
-        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/faq')}>
+        <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/faq')}>
           <Box sx={styles}>
             <HelpCircleOutline sx={{ mr: 2 }} />
             FAQ

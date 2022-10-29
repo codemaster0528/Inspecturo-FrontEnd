@@ -6,10 +6,10 @@ import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
 
-import CardHighestInspecturoScoreOwner from 'src/views/ui/cards/advanced/CardHighestInspecturoScoreOwner'
-import CardMostPopularOwner from 'src/views/ui/cards/advanced/CardMostPopularOwner'
-import CardHighestEarningOwner from 'src/views/ui/cards/advanced/CardHighestEarningOwner'
-import OwnersTable3 from 'src/views/ui/cards/basic/OwnersTable3'
+import CardHighestInspecturoScoreOwner from 'src/views/cards/CardHighestInspecturoScoreOwner'
+import CardMostPopularOwner from 'src/views/cards/CardMostPopularOwner'
+import CardHighestEarningOwner from 'src/views/cards/CardHighestEarningOwner'
+import OwnersTable3 from 'src/views/table/OwnersTable3'
 
 const CardWidgets = () => {
   return (

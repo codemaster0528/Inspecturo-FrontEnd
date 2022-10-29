@@ -54,12 +54,15 @@ const Navigation = () => {
     const userRegionIds = JSON.parse(window.localStorage.getItem(authConfig.storageUserRegionIds))
 
     let tmpRegionTree = []
+
     for (let i = 0; i < userRegionTexts.length; i++) {
       tmpRegionTree.push({
         title: userRegionTexts[i].inspecturo_regionValue,
         path: '/dashboard?' + userRegionIds[i * 2]
       })
     }
+
+    window.localStorage.setItem(authConfig.storageCurrentRegion, userRegionIds[0])
     setRegionTree(tmpRegionTree)
     saveSettings({ ...settings, ['mode']: 'light' })
   }, [])

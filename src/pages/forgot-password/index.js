@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 // ** Next Imports
 import Link from 'next/link'
 
@@ -8,6 +10,7 @@ import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { styled, useTheme } from '@mui/material/styles'
+import FormHelperText from '@mui/material/FormHelperText'
 import Typography from '@mui/material/Typography'
 
 // ** Icons Imports
@@ -83,9 +86,35 @@ const ForgotPassword = () => {
   const { skin } = settings
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
 
+  const [error, setError] = useState('')
+  const [disable, setDisable] = useState(false)
+
   const handleSubmit = e => {
     e.preventDefault()
-    console.log('ssdafasdfasdfasdfasd')
+    var myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    var urlencoded = new URLSearchParams()
+    urlencoded.append('email', e.target.email.value)
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    }
+
+    fetch('http://localhost:9118/forgotPassword', requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        if (!result.includes('Invalid')) {
+          setError('Password Reset Link sent to your Email box. Please confirm your Email box!')
+          setDisable(true)
+        } else {
+          setError('Invalid Email Address')
+        }
+      })
+      .catch(error => console.log('error', error))
   }
 
   const imageSource =
@@ -149,8 +178,25 @@ const ForgotPassword = () => {
               </Typography>
             </Box>
             <form noValidate autoComplete='off' onSubmit={handleSubmit}>
-              <TextField autoFocus type='email' label='Email' sx={{ display: 'flex', mb: 4 }} />
-              <Button fullWidth size='large' type='submit' variant='contained' sx={{ mb: 5.25 }}>
+              <TextField
+                autoFocus
+                name='email'
+                type='email'
+                label='Email'
+                sx={{ display: 'flex', mb: 4 }}
+                disabled={disable}
+              />
+              <FormHelperText sx={{ ml: 2 }} id=''>
+                {error}
+              </FormHelperText>
+              <Button
+                fullWidth
+                size='large'
+                type='submit'
+                variant='contained'
+                sx={{ mb: 5.25, mt: 3 }}
+                disabled={disable}
+              >
                 Send reset link
               </Button>
               <Typography sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

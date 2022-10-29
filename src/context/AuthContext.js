@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
       if (storedToken) {
         setLoading(true)
         await axios
-          .get(authConfig.meEndpoint, {
+          .get(SERVER_URL + authConfig.meEndpoint, {
             headers: {
               Authorization: storedToken
             }
@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
       })
       .then(() => {
         axios
-          .get(authConfig.meEndpoint, {
+          .get(SERVER_URL + authConfig.meEndpoint, {
             headers: {
               Authorization: window.localStorage.getItem(authConfig.storageTokenKeyName)
             }
@@ -94,6 +94,7 @@ const AuthProvider = ({ children }) => {
             await window.localStorage.setItem('userData', JSON.stringify(response.data.userData))
 
             const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
+            console.log('redirect url : ' + redirectURL)
             router.replace(redirectURL)
           })
       })

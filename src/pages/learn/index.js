@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 // ** Styled Component Import
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
-import FrameOnLearn from 'src/views/ui/cards/basic/iFrameOnLearnPage'
+import FrameOnLearn from 'src/views/cards/iFrameOnLearnPage'
 
 const CardWidgets = () => {
   return (

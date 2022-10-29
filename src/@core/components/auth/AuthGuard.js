@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 
 // ** Hooks Import
 import { useAuth } from 'src/hooks/useAuth'
+import { WindowShutter } from 'mdi-material-ui'
 
 const AuthGuard = props => {
   const { children, fallback } = props
@@ -13,10 +14,18 @@ const AuthGuard = props => {
   const router = useRouter()
   useEffect(
     () => {
-      if (!router.isReady) {
+      if (!router.isReady && !router.asPath.includes('reset-password')) {
         return
       }
-      if (auth.user === null && !window.localStorage.getItem('userData')) {
+      if (router.asPath.includes('reset-password')) {
+        var url = router.asPath
+        url = url.split('=')
+
+        const resetToken = url[url.length - 1]
+
+        window.localStorage.setItem('storageResetToken', resetToken)
+        router.replace('/reset-password/')
+      } else if (auth.user === null && !window.localStorage.getItem('userData')) {
         if (router.asPath !== '/') {
           router.replace({
             pathname: '/login',
@@ -30,8 +39,10 @@ const AuthGuard = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [router.route]
   )
-  if (auth.loading || auth.user === null) {
-    return fallback
+  if (!router.asPath.includes('reset-password')) {
+    if (auth.loading || auth.user === null) {
+      return fallback
+    }
   }
 
   return <>{children}</>
