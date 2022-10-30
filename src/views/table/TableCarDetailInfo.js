@@ -1,20 +1,11 @@
 // ** React Imports
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import { DataGrid, DataGridProps } from '@mui/x-data-grid'
-import Grid from '@mui/material/Grid'
-import { DataGridPro } from '@mui/x-data-grid-pro'
-import Rating from '@mui/material/Rating'
-import SwiperLoop from 'src/views/components/swiper/SwiperLoop'
-import CardSnippet from 'src/@core/components/card-snippet'
-import { useKeenSlider } from 'keen-slider/react'
-import KeenSliderWrapper from 'src/@core/styles/libs/keen-slider'
+import { DataGrid } from '@mui/x-data-grid'
 
 // ** Third Party Components
 import toast from 'react-hot-toast'
@@ -25,6 +16,9 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
+
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
 
 // ** renders client column
 const renderClient = params => {

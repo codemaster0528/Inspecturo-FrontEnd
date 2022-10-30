@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import { DataGrid } from '@mui/x-data-grid'
@@ -20,7 +19,8 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 import { getInitials } from 'src/@core/utils/get-initials'
 import authConfig from 'src/configs/auth'
 
-// ** Data Import
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
 
 // ** renders client column
 const renderClient = params => {
@@ -87,7 +87,7 @@ const TableStateGrowth = () => {
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
 
     var urlencoded = new URLSearchParams()
-    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('ascout_keyValue', ASCOUT_KEYVALUE)
     urlencoded.append('regionId', window.localStorage.getItem(authConfig.storageCurrentRegion))
 
     var requestOptions = {

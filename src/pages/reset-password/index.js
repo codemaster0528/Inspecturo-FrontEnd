@@ -23,9 +23,6 @@ import ChevronLeft from 'mdi-material-ui/ChevronLeft'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 import FormHelperText from '@mui/material/FormHelperText'
 
-// ** Configs
-import themeConfig from 'src/configs/themeConfig'
-
 // ** Next Imports
 import { useRouter } from 'next/router'
 
@@ -303,8 +300,8 @@ const ResetPasswordV2 = () => {
               >
                 RESET YOUR PASSWORD
               </Button>
-              <Typography sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Link passHref href='/pages/auth/login-v2'>
+              <Typography component={'div'} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Link passHref href='/login'>
                   <Typography
                     component={MuiLink}
                     sx={{ display: 'flex', alignItems: 'center', color: 'primary.main', justifyContent: 'center' }}

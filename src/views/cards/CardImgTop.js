@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 // ** MUI Imports
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
-import authConfig from 'src/configs/auth'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
+
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
 
 const CardImgTop = () => {
   const [dataFromAPI, setDataFromAPI] = useState([
@@ -33,7 +35,7 @@ const CardImgTop = () => {
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
 
     var urlencoded = new URLSearchParams()
-    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('ascout_keyValue', ASCOUT_KEYVALUE)
     urlencoded.append('regionId', '1')
 
     var requestOptions = {

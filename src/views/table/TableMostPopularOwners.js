@@ -1,31 +1,16 @@
 // ** React Imports
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-// ** MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import { DataGrid, DataGridProps } from '@mui/x-data-grid'
-import Grid from '@mui/material/Grid'
-import { DataGridPro } from '@mui/x-data-grid-pro'
+import { DataGrid } from '@mui/x-data-grid'
 import Rating from '@mui/material/Rating'
-import SwiperLoop from 'src/views/components/swiper/SwiperLoop'
-import CardSnippet from 'src/@core/components/card-snippet'
-import { useKeenSlider } from 'keen-slider/react'
-import KeenSliderWrapper from 'src/@core/styles/libs/keen-slider'
-import CarDetailInfo from 'src/views/table/TableCarDetailInfo'
-
-// ** Third Party Components
-import toast from 'react-hot-toast'
 
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
-import CustomAvatar from 'src/@core/components/mui/avatar'
 
-// ** Utils Import
-import { getInitials } from 'src/@core/utils/get-initials'
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
 
 const TableMostPopularOwners = ({ rows }) => {
   // ** States
@@ -79,7 +64,7 @@ const TableMostPopularOwners = ({ rows }) => {
       renderCell: params => (
         <Rating
           sx={{ color: '#593CFB' }}
-          defaultValue={params.row.driverRating}
+          defaultValue={Number(params.row.driverRating)}
           precision={0.1}
           name='half-rating'
           readOnly

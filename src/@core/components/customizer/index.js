@@ -114,7 +114,9 @@ const Customizer = () => {
           <Typography variant='h6' sx={{ fontWeight: 600, textTransform: 'uppercase' }}>
             Theme Customizer
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>Customize & Preview in Real Time</Typography>
+          <Typography component={'div'} sx={{ color: 'text.secondary' }}>
+            Customize & Preview in Real Time
+          </Typography>
           <IconButton
             onClick={() => setOpen(false)}
             sx={{
@@ -179,7 +181,9 @@ const Customizer = () => {
             </Box>
 
             <Box>
-              <Typography sx={{ mb: 2.5 }}>Primary Color</Typography>
+              <Typography component={'div'} sx={{ mb: 2.5 }}>
+                Primary Color
+              </Typography>
               <Box sx={{ display: 'flex' }}>
                 <ColorBox
                   onClick={() => handleChange('themeColor', 'primary')}

@@ -199,7 +199,7 @@ const ForgotPassword = () => {
               >
                 Send reset link
               </Button>
-              <Typography sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Typography component={'div'} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Link passHref href='/login'>
                   <Typography
                     component={MuiLink}

@@ -126,7 +126,9 @@ const NotificationDropdown = props => {
       >
         <MenuItem disableRipple>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-            <Typography sx={{ fontWeight: 600 }}>Notifications</Typography>
+            <Typography component={'div'} sx={{ fontWeight: 600 }}>
+              Notifications
+            </Typography>
             <CustomChip
               skin='light'
               size='small'

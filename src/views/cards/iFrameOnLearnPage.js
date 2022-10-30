@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import Avatar from '@mui/material/Avatar'
-import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import authConfig from 'src/configs/auth'
-import AvatarGroup from '@mui/material/AvatarGroup'
+
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
 
 const FrameOnLearn = () => {
   const [dataFromAPI, setDataFromAPI] = useState([])
@@ -24,7 +23,7 @@ const FrameOnLearn = () => {
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
 
     var urlencoded = new URLSearchParams()
-    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('ascout_keyValue', ASCOUT_KEYVALUE)
     urlencoded.append('regionId', window.localStorage.getItem(authConfig.storageCurrentRegion))
 
     var requestOptions = {

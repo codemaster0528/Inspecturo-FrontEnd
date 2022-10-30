@@ -308,7 +308,9 @@ const LoginPage = () => {
                 Login
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ mr: 2, color: 'text.secondary' }}>New on our platform?</Typography>
+                <Typography component={'div'} sx={{ mr: 2, color: 'text.secondary' }}>
+                  New on our platform?
+                </Typography>
                 <Typography>
                   <Link passHref href='/register'>
                     <Typography component={MuiLink} sx={{ color: 'primary.main' }}>

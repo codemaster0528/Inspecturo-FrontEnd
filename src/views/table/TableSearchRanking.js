@@ -21,6 +21,9 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
 
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
+
 // ** renders client column
 const renderClient = params => {
   const { row } = params
@@ -214,7 +217,7 @@ const TableSearchRanking = ({ rows }) => {
       renderCell: params => (
         <Rating
           sx={{ color: '#593CFB' }}
-          defaultValue={params.row.DriverRating}
+          defaultValue={Number(params.row.DriverRating)}
           precision={0.1}
           name='half-rating'
           readOnly

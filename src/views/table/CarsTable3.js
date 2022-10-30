@@ -6,15 +6,17 @@ import Tab from '@mui/material/Tab'
 import Card from '@mui/material/Card'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
-import Button from '@mui/material/Button'
 import TabContext from '@mui/lab/TabContext'
-import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 import TableMostPopularCars from './TableMostPopularCars'
 import TableHighestEarningCars from './TableHighestEarningCars'
 import TableHighestInspecturoScore from './TableHighestInspecturoScore'
 import authConfig from 'src/configs/auth'
+
+// ** Global Values
+import setCache, { getCache } from 'src/cache'
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
 
 const CarsTable3 = () => {
   // ** State
@@ -25,33 +27,37 @@ const CarsTable3 = () => {
 
   useEffect(() => {
     const API = async () => {
-      await getDataFromAPI('http://161.35.118.186/mkulima/gari/safari', setDataFromAPI1)
-      await getDataFromAPI('http://161.35.118.186/mkulima/gari/pesa', setDataFromAPI2)
-      await getDataFromAPI('http://161.35.118.186/mkulima/gari/mkaguzi', setDataFromAPI3)
+      await getDataFromAPI('http://161.35.118.186/mkulima/gari/safari', setDataFromAPI1, 'MostPopularCar')
+      await getDataFromAPI('http://161.35.118.186/mkulima/gari/pesa', setDataFromAPI2, 'HighestRevenueCar')
+      await getDataFromAPI('http://161.35.118.186/mkulima/gari/mkaguzi', setDataFromAPI3, 'HighestInspecturoScoreCar')
     }
 
-    // const mostPopularCars = JSON.parse(window.localStorage.getItem(authConfig.storageMostPopularCars))
-    // const highestRevenueCars = JSON.parse(window.localStorage.getItem(authConfig.storageHighestRevenueCars))
-    // const highestInspecturoCars = JSON.parse(window.localStorage.getItem(authConfig.storageHighestInspecturoCars))
-    // setDataFromAPI1(mostPopularCars)
-    // setDataFromAPI2(highestRevenueCars)
-    // setDataFromAPI3(highestInspecturoCars)
+    const getCacheData = async () => {
+      const cacheData1 = await getCache('MostPopularCar')
+      const cacheData2 = await getCache('HighestRevenueCar')
+      const cacheData3 = await getCache('HighestInspecturoScoreCar')
 
-    // if (mostPopularCars && highestRevenueCars && highestInspecturoCars) return
-    API()
-    console.log('*********************')
+      if (!cacheData1 || Object.keys(cacheData1).length == 0) {
+        API()
+      } else {
+        setDataFromAPI1(cacheData1)
+        setDataFromAPI2(cacheData2)
+        setDataFromAPI3(cacheData3)
+      }
+    }
+    getCacheData()
   }, [])
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
-  const getDataFromAPI = async (url, func) => {
+  const getDataFromAPI = async (url, func, cacheName) => {
     var myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
 
     var urlencoded = new URLSearchParams()
-    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('ascout_keyValue', ASCOUT_KEYVALUE)
     urlencoded.append('regionId', window.localStorage.getItem(authConfig.storageCurrentRegion))
 
     var requestOptions = {
@@ -65,6 +71,7 @@ const CarsTable3 = () => {
       .then(response => response.json())
       .then(result => {
         func(result.data)
+        setCache(cacheName, result.data)
       })
       .catch(error => console.log('error', error))
   }

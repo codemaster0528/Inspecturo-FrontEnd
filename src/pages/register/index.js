@@ -393,7 +393,9 @@ const Register = () => {
                 Sign up
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ mr: 2, color: 'text.secondary' }}>Already have an account?</Typography>
+                <Typography component={'div'} sx={{ mr: 2, color: 'text.secondary' }}>
+                  Already have an account?
+                </Typography>
                 <Typography>
                   <Link passHref href='/login'>
                     <Typography component={MuiLink} sx={{ color: 'primary.main' }}>

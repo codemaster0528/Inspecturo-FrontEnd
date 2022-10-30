@@ -17,7 +17,9 @@ const CardStatsCharacter = ({ data }) => {
       <CardContent sx={{ pb: '0 !important' }}>
         <Grid container>
           <Grid item xs={6}>
-            <Typography sx={{ mb: 1.5, fontWeight: 600, whiteSpace: 'nowrap' }}>{title}</Typography>
+            <Typography component={'div'} sx={{ mb: 1.5, fontWeight: 600, whiteSpace: 'nowrap' }}>
+              {title}
+            </Typography>
             <CustomChip
               skin='light'
               size='small'

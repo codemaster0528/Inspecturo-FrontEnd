@@ -1,43 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 // ** MUI Import
 import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
 import CardMedia from '@mui/material/CardMedia'
 import { styled } from '@mui/material/styles'
-import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import AvatarGroup from '@mui/material/AvatarGroup'
 import CardContent from '@mui/material/CardContent'
-import LinearProgress from '@mui/material/LinearProgress'
-
-// ** Icons Imports
-import Paperclip from 'mdi-material-ui/Paperclip'
-import DotsVertical from 'mdi-material-ui/DotsVertical'
-import CheckCircleOutline from 'mdi-material-ui/CheckCircleOutline'
 import PiggyBank from 'mdi-material-ui/PiggyBank'
 import Car from 'mdi-material-ui/Car'
 import Star from 'mdi-material-ui/Star'
-import Calendar from 'mdi-material-ui/Calendar'
 import Account from 'mdi-material-ui/Account'
-
-import TrendingUp from 'mdi-material-ui/TrendingUp'
-import StarOutline from 'mdi-material-ui/StarOutline'
-import AccountOutline from 'mdi-material-ui/AccountOutline'
-import LockOpenOutline from 'mdi-material-ui/LockOpenOutline'
 
 // ** Custom Components Imports
 import authConfig from 'src/configs/auth'
-import CustomChip from 'src/@core/components/mui/chip'
 
-// Styled Box component
-const StyledBox = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.up('sm')]: {
-    borderRight: `0px solid ${theme.palette.divider}`
-  }
-}))
+// ** Global Values
+import setCache, { getCache } from 'src/cache'
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
 
 const CardHighestInspecturoScoreCar = () => {
   const [dataFromAPI, setDataFromAPI] = useState([
@@ -81,10 +61,16 @@ const CardHighestInspecturoScoreCar = () => {
   ])
 
   useEffect(() => {
-    if (dataFromAPI.length != 1) return
-    const highestInspecturoCars = JSON.parse(window.localStorage.getItem(authConfig.storageHighestInspecturoCars))
-    if (highestInspecturoCars) setDataFromAPI(highestInspecturoCars)
-    else getDataFromAPI()
+    const getCacheData = async () => {
+      const cacheData = await getCache('HighestInspecturoScoreCar')
+      if (!cacheData || Object.keys(cacheData).length == 0) {
+        if (dataFromAPI.length != 1) return
+        else getDataFromAPI()
+      } else {
+        setDataFromAPI(cacheData)
+      }
+    }
+    getCacheData()
   }, [])
 
   const getDataFromAPI = async () => {
@@ -92,7 +78,7 @@ const CardHighestInspecturoScoreCar = () => {
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
 
     var urlencoded = new URLSearchParams()
-    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('ascout_keyValue', ASCOUT_KEYVALUE)
     urlencoded.append('regionId', window.localStorage.getItem(authConfig.storageCurrentRegion))
 
     var requestOptions = {
@@ -108,7 +94,8 @@ const CardHighestInspecturoScoreCar = () => {
         result.data.sort(function (b, a) {
           return a.carTrips - b.carTrips
         })
-        window.localStorage.setItem(authConfig.storageHighestInspecturoCars, JSON.stringify(result.data))
+        setCache('HighestInspecturoScoreCar', result.data)
+
         setDataFromAPI(result.data)
       })
       .catch(error => console.log('error', error))
@@ -116,7 +103,10 @@ const CardHighestInspecturoScoreCar = () => {
 
   return (
     <Card sx={{ height: 500 }}>
-      <CardMedia sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }} image='/images/cars/3.png' />
+      <CardMedia
+        sx={{ height: 150, width: 150, borderRadius: 40, margin: 'auto', mt: 5 }}
+        image={dataFromAPI[0].carPhoto1}
+      />
       <CardContent sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', textAlign: 'center' }}>
         <Typography variant='h6' sx={{ mb: 1 }}>
           {dataFromAPI[0].carMake} {dataFromAPI[0].carModel} {dataFromAPI[0].carYear}

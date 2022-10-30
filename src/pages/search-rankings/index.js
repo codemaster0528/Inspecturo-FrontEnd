@@ -5,6 +5,9 @@ import Grid from '@mui/material/Grid'
 import TableSearchRanking from 'src/views/table/TableSearchRanking'
 import authConfig from 'src/configs/auth'
 
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
+
 const CardBasic = () => {
   const [dataFromAPI, setDataFromAPI] = useState([])
 
@@ -22,7 +25,7 @@ const CardBasic = () => {
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
 
     var urlencoded = new URLSearchParams()
-    urlencoded.append('ascout_keyValue', 'zD3BVPtyimdhrNBX5')
+    urlencoded.append('ascout_keyValue', ASCOUT_KEYVALUE)
     urlencoded.append('regionId', window.localStorage.getItem(authConfig.storageCurrentRegion))
 
     var requestOptions = {

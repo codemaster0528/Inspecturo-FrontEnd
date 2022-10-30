@@ -14,7 +14,6 @@ import CardMostPopularCar from 'src/views/cards/CardMostPopularCar'
 import CardHighestRevenueCar from 'src/views/cards/CardHighestRevenueCar'
 import authConfig from 'src/configs/auth'
 import CardMostPopularOwner from 'src/views/cards/CardMostPopularOwner'
-import { AllInclusive } from 'mdi-material-ui'
 
 const CardWidgets = () => {
   useEffect(() => {

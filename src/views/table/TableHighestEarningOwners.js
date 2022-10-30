@@ -9,6 +9,9 @@ import Rating from '@mui/material/Rating'
 // ** Custom Components
 import CustomChip from 'src/@core/components/mui/chip'
 
+// ** Global Values
+import { ASCOUT_KEYVALUE } from 'src/globalValues'
+
 const TableHighestEarningOwners = ({ rows }) => {
   // ** States
   const [pageSize, setPageSize] = useState(50)
@@ -61,7 +64,7 @@ const TableHighestEarningOwners = ({ rows }) => {
       renderCell: params => (
         <Rating
           sx={{ color: '#593CFB' }}
-          defaultValue={params.row.driverRating}
+          defaultValue={Number(params.row.driverRating)}
           precision={0.1}
           name='half-rating'
           readOnly
