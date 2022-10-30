@@ -31,12 +31,9 @@ const renderClient = params => {
   const states = ['success', 'error', 'warning', 'info', 'primary', 'secondary']
   const color = states[stateNum]
   if (row.carId) {
-    const carImage = '1.png'
+    const carImage = row.carPhoto1
 
-    // carImage = getCarImage(row.carId)
-    // console.log('carImage = ' + carImage)
-
-    return <CustomAvatar src={`/images/cars/${carImage}`} sx={{ mr: 3, width: '1.875rem', height: '1.875rem' }} />
+    return <CustomAvatar src={carImage} sx={{ mr: 3, width: '1.875rem', height: '1.875rem' }} />
   } else {
     return (
       <CustomAvatar skin='light' color={color} sx={{ mr: 3, fontSize: '.8rem', width: '1.875rem', height: '1.875rem' }}>

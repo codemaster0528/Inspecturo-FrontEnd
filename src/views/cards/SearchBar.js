@@ -51,6 +51,21 @@ const SearchBar = () => {
     setAnchorEl(null)
   }
 
+  const onHandleSearch = e => {
+    var searchOption = e.target.value
+    if (
+      searchOption == 10 ||
+      searchOption == 20 ||
+      searchOption == 50 ||
+      searchOption == 70 ||
+      searchOption == 80 ||
+      searchOption == 100
+    )
+      window.location.href = '/cars'
+    else if (searchOption == 20 || searchOption == 30 || searchOption == 40 || searchOption == 60)
+      window.location.href = '/dashboard'
+  }
+
   return (
     <Card>
       <Grid container spacing={6}>
@@ -79,6 +94,7 @@ const SearchBar = () => {
                   defaultValue=''
                   id='demo-simple-select-autoWidth'
                   labelId='demo-simple-select-autoWidth-label'
+                  onChange={onHandleSearch}
                 >
                   <MenuItem value={10}>What are the most popular cars in my State?</MenuItem>
                   <MenuItem value={20}>What are the highest earning cars in my State?</MenuItem>
